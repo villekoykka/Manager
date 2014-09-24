@@ -1,3 +1,4 @@
 sales/quote (customer/address catalog/product):
   shipping_method: flatrate_flatrate
   payment_method: checkmo
+  customer_email: test@example.com

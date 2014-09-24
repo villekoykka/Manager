@@ -57,6 +57,12 @@ class Order extends AbstractBuilder implements BuilderInterface
 
         $this->model->getPayment()->importData(array('method' => $this->attributes['payment_method']));
 
+        $attributes = $this->attributes;
+        unset($attributes['payment_method']);
+        unset($attributes['shipping_method']);
+
+        $this->model->addData($attributes);
+
         $this->model->collectTotals()->save();
 
         \Mage::app()->getStore()->setConfig(\Mage_Sales_Model_Order::XML_PATH_EMAIL_ENABLED, '0');

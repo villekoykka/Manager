@@ -30,4 +30,9 @@ class OrderTest extends WebTestCase
         $session->visit(getenv('BASE_URL') . '/admin/sales_order/index');
         $this->assertSession()->pageTextNotContains($this->orderFixture->getIncrementId());
     }
+
+    public function testOrderAttributeAssignment()
+    {
+        $this->assertNotFalse(filter_var($this->orderFixture->getCustomerEmail(), FILTER_VALIDATE_EMAIL));
+    }
 }
